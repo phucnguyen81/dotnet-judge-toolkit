@@ -3,8 +3,10 @@ using System.IO;
 using System.Reflection;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 
 using Judge.Model;
+using TestResource = Judge.Test.Resource.TestResource;
 
 namespace Judge.Test
 {
@@ -12,28 +14,12 @@ namespace Judge.Test
     public class LanguagesTest
     {
         [TestMethod]
-        public void TestSerialization()
+        public void TestConversionWorks()
         {
-            LanguageItem[] langs = new LanguageItem[]
-            {
-                new LanguageItem()
-            };
-        }
-
-        [TestMethod]
-        public void GetFromResources()
-        {
-            Assembly assem = this.GetType().Assembly;
-            var resources = assem.GetManifestResourceNames();
-            Console.WriteLine(resources);
-            /* string resourceName = "Resource.language_items.json"; */
-            /* using (Stream stream = assem.GetManifestResourceStream(resourceName)) */
-            /* { */
-            /*     using (var reader = new StreamReader(stream)) */
-            /*     { */
-            /*         reader.ReadToEnd(); */
-            /*     } */
-            /* } */
+            string jsonExpected = TestResource.Read("language_items.json");
+            LanguageItem[] items = JsonConvert.DeserializeObject<LanguageItem[]>(jsonExpected);
+            string jsonActual = JsonConvert.SerializeObject(items);
+            Assert.AreEqual(jsonExpected, jsonActual);
         }
     }
 }
