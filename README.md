@@ -16,10 +16,10 @@ Dlls are for .NET 4.5
 
 ## Convert to .NET project
 
-- convert the project to .NET project
-- extract Core project, which contains the models
-- extract Demo project, which is an Console App showing code usage
-- extract Test project, which contains unit tests
+- convert the project to .NET project (DONE)
+- extract Core project, which contains the models (DONE)
+- extract Demo project, which is an Console App showing code usage (DONE)
+- extract Test project, which contains unit tests (IN-PROGRESS)
 - extract SysTest project, which contains integration tests
 
 ## Unit tests for the models (convert to/from json)

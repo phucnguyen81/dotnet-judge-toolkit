@@ -16,4 +16,7 @@
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\**\*.json" />
+  </ItemGroup>
 </Project>

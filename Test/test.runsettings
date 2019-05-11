@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+ <LoggerRunSettings>
+    <Loggers>
+      <Logger friendlyName="console">
+        <Configuration>
+          <verbosity>detailed</verbosity>
+        </Configuration>
+      </Logger>
+    </Loggers>
+  </LoggerRunSettings>
+</RunSettings>
