@@ -2,9 +2,13 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace Judge.Test.Resource
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using Newtonsoft.Json.Linq;
+
+namespace Judge.Test.Util
 {
-    public class TestResource
+    public class TestUtil
     {
         // Read embedded resources in the directory of this class to string
         // path = e.g. names.json, where names.json is a file in the directory of this class
@@ -24,6 +28,13 @@ namespace Judge.Test.Resource
                     return reader.ReadToEnd();
                 }
             }
+        }
+
+        public static void AssertJsonEqual(string expectedJson, string actualJson)
+        {
+            expectedJson = JToken.Parse(expectedJson).ToString().Trim();
+            actualJson = JToken.Parse(actualJson).ToString().Trim();
+            Assert.AreEqual(expectedJson, actualJson);
         }
     }
 }
