@@ -1,0 +1,415 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Judge0 Schema v1.1.5",
+    "id": "https://api.judge0.com/v1.1.5",
+    "definitions": {
+        "SubmissionStatus": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "SubmissionField": {
+            "type": "string",
+            "enum": [
+                "stdout",
+                "time",
+                "memory",
+                "stderr",
+                "token",
+                "compile_output",
+                "message",
+                "status",
+                "language"
+            ]
+        },
+        "LanguageItem": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "SubmissionResult": {
+            "type": "object",
+            "properties": {
+                "stdout": {
+                    "type": "string"
+                },
+                "stderr": {
+                    "type": "string"
+                },
+                "compile_output": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "exit_code": {
+                    "type": "integer"
+                },
+                "exit_signal": {
+                    "type": "integer"
+                },
+                "status": {
+                    "$ref": "#/definitions/SubmissionStatus"
+                },
+                "status_id": {
+                    "type": "integer"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "finished_at": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "number"
+                },
+                "wall_time": {
+                    "type": "number"
+                },
+                "memory": {
+                    "type": "number"
+                },
+                "language": {
+                    "$ref": "#/definitions/LanguageItem"
+                }
+            }
+        },
+        "Worker": {
+            "type": "object",
+            "properties": {
+                "queue": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "integer"
+                },
+                "available": {
+                    "type": "integer"
+                },
+                "idle": {
+                    "type": "integer"
+                },
+                "working": {
+                    "type": "integer"
+                },
+                "paused": {
+                    "type": "integer"
+                },
+                "failed": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "properties": {
+        "SubmissionParameters": {
+            "type": "object",
+            "properties": {
+                "base64_encoded": {
+                    "type": "boolean",
+                    "default" : false
+                },
+                "wait": {
+                    "type": "boolean",
+                    "default" : false
+                }
+            }
+        },
+        "Submission": {
+            "type": "object",
+            "properties": {
+                "source_code": {
+                    "type": "string"
+                },
+                "language_id": {
+                    "type": "integer"
+                },
+                "stdin": {
+                    "type": "string"
+                },
+                "expected_output": {
+                    "type": "string"
+                },
+                "cpu_time_limit": {
+                    "type": "number"
+                },
+                "cpu_extra_time": {
+                    "type": "number"
+                },
+                "wall_time_limit": {
+                    "type": "number"
+                },
+                "memory_limit": {
+                    "type": "number"
+                },
+                "stack_limit": {
+                    "type": "integer"
+                },
+                "max_processes_and_or_threads": {
+                    "type": "integer"
+                },
+                "enable_per_process_and_thread_time_limit": {
+                    "type": "boolean"
+                },
+                "max_file_size": {
+                    "type": "integer"
+                },
+                "number_of_runs": {
+                    "type": "integer"
+                }
+            }
+        },
+        "GetSubmissionParms": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                },
+                "base64_encoded": {
+                    "type": "boolean"
+                },
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SubmissionField"
+                    }
+                }
+            }
+        },
+        "GetAllSubmissionsParms": {
+            "type": "object",
+            "properties": {
+                "base64_encoded": {
+                    "type": "boolean"
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "per_page": {
+                    "type": "integer"
+                },
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SubmissionField"
+                    }
+                }
+            }
+        },
+        "SubmissionsPage": {
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "type": "object",
+                    "properties": {
+                        "current_page": {
+                            "type": "integer"
+                        },
+                        "next_page": {
+                            "type": "integer"
+                        },
+                        "prev_page": {
+                            "type": "integer"
+                        },
+                        "total_pages": {
+                            "type": "integer"
+                        },
+                        "total_count": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "submissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SubmissionResult"
+                    }
+                }
+            }
+        },
+        "Languages": {
+            "type" : "array",
+            "items": {
+                "$ref": "#/definitions/LanguageItem"
+            }
+        },
+        "SubmissionStatuses": {
+            "type" : "array",
+            "items": {
+                "$ref": "#/definitions/SubmissionStatus"
+            }
+        },
+        "SystemInfo": {
+            "type": "object",
+            "properties": {
+                "Architecture": {
+                    "type": "string"
+                },
+                "CPU op-mode(s)": {
+                    "type": "string"
+                },
+                "Byte Order": {
+                    "type": "string"
+                },
+                "CPU(s)": {
+                    "type": "string"
+                },
+                "On-line CPU(s) list": {
+                    "type": "string"
+                },
+                "Thread(s) per core": {
+                    "type": "string"
+                },
+                "Core(s) per socket": {
+                    "type": "string"
+                },
+                "Socket(s)": {
+                    "type": "string"
+                },
+                "NUMA node(s)": {
+                    "type": "string"
+                },
+                "Vendor ID": {
+                    "type": "string"
+                },
+                "CPU family": {
+                    "type": "string"
+                },
+                "Model": {
+                    "type": "string"
+                },
+                "Model name": {
+                    "type": "string"
+                },
+                "Stepping": {
+                    "type": "string"
+                },
+                "CPU MHz": {
+                    "type": "string"
+                },
+                "CPU max MHz": {
+                    "type": "string"
+                },
+                "CPU min MHz": {
+                    "type": "string"
+                },
+                "BogoMIPS": {
+                    "type": "string"
+                },
+                "Virtualization": {
+                    "type": "string"
+                },
+                "L1d cache": {
+                    "type": "string"
+                },
+                "L1i cache": {
+                    "type": "string"
+                },
+                "L2 cache": {
+                    "type": "string"
+                },
+                "L3 cache": {
+                    "type": "string"
+                },
+                "NUMA node0 CPU(s)": {
+                    "type": "string"
+                },
+                "Mem": {
+                    "type": "string"
+                },
+                "Swap": {
+                    "type": "string"
+                }
+            }
+        },
+        "ConfigInfo": {
+            "type": "object",
+            "properties": {
+                "enable_wait_result": {
+                    "type": "boolean"
+                },
+                "cpu_time_limit": {
+                    "type": "number"
+                },
+                "max_cpu_time_limit": {
+                    "type": "number"
+                },
+                "cpu_extra_time": {
+                    "type": "number"
+                },
+                "max_cpu_extra_time": {
+                    "type": "number"
+                },
+                "wall_time_limit": {
+                    "type": "number"
+                },
+                "max_wall_time_limit": {
+                    "type": "number"
+                },
+                "memory_limit": {
+                    "type": "integer"
+                },
+                "max_memory_limit": {
+                    "type": "integer"
+                },
+                "stack_limit": {
+                    "type": "integer"
+                },
+                "max_stack_limit": {
+                    "type": "integer"
+                },
+                "max_processes_and_or_threads": {
+                    "type": "integer"
+                },
+                "max_max_processes_and_or_threads": {
+                    "type": "integer"
+                },
+                "enable_per_process_and_thread_time_limit": {
+                    "type": "boolean"
+                },
+                "allow_enable_per_process_and_thread_time_limit": {
+                    "type": "boolean"
+                },
+                "enable_per_process_and_thread_memory_limit": {
+                    "type": "boolean"
+                },
+                "allow_enable_per_process_and_thread_memory_limit": {
+                    "type": "boolean"
+                },
+                "max_file_size": {
+                    "type": "integer"
+                },
+                "max_max_file_size": {
+                    "type": "integer"
+                },
+                "number_of_runs": {
+                    "type": "integer"
+                },
+                "max_number_of_runs": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Workers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Worker"
+            }
+        }
+    }
+}
