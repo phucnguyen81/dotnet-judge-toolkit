@@ -10,10 +10,10 @@ using TestUtil = Judge.Test.Util.TestUtil;
 namespace Judge.Test
 {
     [TestClass]
-    public class LanguagesTest
+    public class LanguageItemsTests
     {
         [TestMethod]
-        public void TestConversionIsReversible()
+        public void TestLanguageItemsConversion()
         {
             string jsonExpected = TestUtil.Read("language_items.json");
             LanguageItem[] items = JsonConvert.DeserializeObject<LanguageItem[]>(jsonExpected);
