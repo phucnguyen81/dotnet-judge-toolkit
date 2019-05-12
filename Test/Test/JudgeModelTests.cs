@@ -24,12 +24,20 @@ namespace Judge.Test
         [TestMethod]
         public void TestSubmissionsRequestConversion()
         {
-            string jsonExpected = TestUtil.Read("submissions_request.json");
+            string jsonExpected = TestUtil.Read("submission_request.json");
             Submission submission = JsonConvert.DeserializeObject<Submission>(jsonExpected);
             string jsonActual = JsonConvert.SerializeObject(submission);
             TestUtil.AssertJsonEqual(jsonExpected, jsonActual);
         }
 
+        [TestMethod]
+        public void TestSubmissionsResponseConversion()
+        {
+            string jsonExpected = TestUtil.Read("submission_response.json");
+            SubmissionResult model = JsonConvert.DeserializeObject<SubmissionResult>(jsonExpected);
+            string jsonActual = JsonConvert.SerializeObject(model);
+            TestUtil.AssertJsonEqual(jsonExpected, jsonActual);
+        }
 
     }
 

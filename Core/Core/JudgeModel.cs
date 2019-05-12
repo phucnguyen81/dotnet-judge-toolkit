@@ -206,11 +206,11 @@ namespace Judge.Model
 
     public partial class SubmissionStatus
     {
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
-
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public long? Id { get; set; }
+
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
+        public string Description { get; set; }
     }
 
     public partial class SubmissionsPage
@@ -242,9 +242,6 @@ namespace Judge.Model
 
     public partial class SubmissionResult
     {
-        [JsonProperty("compile_output", NullValueHandling = NullValueHandling.Ignore)]
-        public string CompileOutput { get; set; }
-
         [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
         public string CreatedAt { get; set; }
 
@@ -260,20 +257,8 @@ namespace Judge.Model
         [JsonProperty("language", NullValueHandling = NullValueHandling.Ignore)]
         public LanguageItem Language { get; set; }
 
-        [JsonProperty("memory", NullValueHandling = NullValueHandling.Ignore)]
-        public double? Memory { get; set; }
-
-        [JsonProperty("message", NullValueHandling = NullValueHandling.Ignore)]
-        public string Message { get; set; }
-
-        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
-        public SubmissionStatus Status { get; set; }
-
         [JsonProperty("status_id", NullValueHandling = NullValueHandling.Ignore)]
         public long? StatusId { get; set; }
-
-        [JsonProperty("stderr", NullValueHandling = NullValueHandling.Ignore)]
-        public string Stderr { get; set; }
 
         [JsonProperty("stdout", NullValueHandling = NullValueHandling.Ignore)]
         public string Stdout { get; set; }
@@ -281,8 +266,23 @@ namespace Judge.Model
         [JsonProperty("time", NullValueHandling = NullValueHandling.Ignore)]
         public double? Time { get; set; }
 
+        [JsonProperty("memory", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Memory { get; set; }
+
+        [JsonProperty("stderr", NullValueHandling = NullValueHandling.Include)]
+        public string Stderr { get; set; }
+
         [JsonProperty("token", NullValueHandling = NullValueHandling.Ignore)]
         public string Token { get; set; }
+
+        [JsonProperty("compile_output", NullValueHandling = NullValueHandling.Include)]
+        public string CompileOutput { get; set; }
+
+        [JsonProperty("message", NullValueHandling = NullValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        public SubmissionStatus Status { get; set; }
 
         [JsonProperty("wall_time", NullValueHandling = NullValueHandling.Ignore)]
         public double? WallTime { get; set; }

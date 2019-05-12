@@ -1,0 +1,13 @@
+{
+    "stdout": "hello, Judge0\n",
+    "time": 0.0,
+    "memory": 128.0,
+    "stderr": null,
+    "token": "756d2c9a-14b9-4e5c-afdf-4ca6bf16310f",
+    "compile_output": null,
+    "message": null,
+    "status": {
+        "id": 3,
+        "description": "Accepted"
+    }
+}
