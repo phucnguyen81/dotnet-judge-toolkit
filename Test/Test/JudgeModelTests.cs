@@ -10,7 +10,7 @@ using TestUtil = Judge.Test.Util.TestUtil;
 namespace Judge.Test
 {
     [TestClass]
-    public class LanguageItemsTests
+    public class JudgeModelTests
     {
         [TestMethod]
         public void TestLanguageItemsConversion()
@@ -20,5 +20,17 @@ namespace Judge.Test
             string jsonActual = JsonConvert.SerializeObject(items);
             TestUtil.AssertJsonEqual(jsonExpected, jsonActual);
         }
+
+        [TestMethod]
+        public void TestSubmissionsRequestConversion()
+        {
+            string jsonExpected = TestUtil.Read("submissions_request.json");
+            Submission submission = JsonConvert.DeserializeObject<Submission>(jsonExpected);
+            string jsonActual = JsonConvert.SerializeObject(submission);
+            TestUtil.AssertJsonEqual(jsonExpected, jsonActual);
+        }
+
+
     }
+
 }

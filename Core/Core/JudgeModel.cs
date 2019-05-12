@@ -152,44 +152,47 @@ namespace Judge.Model
 
     public partial class Submission
     {
-        [JsonProperty("cpu_extra_time", NullValueHandling = NullValueHandling.Ignore)]
-        public double? CpuExtraTime { get; set; }
-
-        [JsonProperty("cpu_time_limit", NullValueHandling = NullValueHandling.Ignore)]
-        public double? CpuTimeLimit { get; set; }
-
-        [JsonProperty("enable_per_process_and_thread_time_limit", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? EnablePerProcessAndThreadTimeLimit { get; set; }
-
-        [JsonProperty("expected_output", NullValueHandling = NullValueHandling.Ignore)]
-        public string ExpectedOutput { get; set; }
+        [JsonProperty("source_code", NullValueHandling = NullValueHandling.Ignore)]
+        public string SourceCode { get; set; }
 
         [JsonProperty("language_id", NullValueHandling = NullValueHandling.Ignore)]
         public long? LanguageId { get; set; }
 
-        [JsonProperty("max_file_size", NullValueHandling = NullValueHandling.Ignore)]
-        public long? MaxFileSize { get; set; }
-
-        [JsonProperty("max_processes_and_or_threads", NullValueHandling = NullValueHandling.Ignore)]
-        public long? MaxProcessesAndOrThreads { get; set; }
-
-        [JsonProperty("memory_limit", NullValueHandling = NullValueHandling.Ignore)]
-        public double? MemoryLimit { get; set; }
-
         [JsonProperty("number_of_runs", NullValueHandling = NullValueHandling.Ignore)]
         public long? NumberOfRuns { get; set; }
-
-        [JsonProperty("source_code", NullValueHandling = NullValueHandling.Ignore)]
-        public string SourceCode { get; set; }
-
-        [JsonProperty("stack_limit", NullValueHandling = NullValueHandling.Ignore)]
-        public long? StackLimit { get; set; }
 
         [JsonProperty("stdin", NullValueHandling = NullValueHandling.Ignore)]
         public string Stdin { get; set; }
 
+        [JsonProperty("expected_output", NullValueHandling = NullValueHandling.Ignore)]
+        public string ExpectedOutput { get; set; }
+
+        [JsonProperty("cpu_time_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public double? CpuTimeLimit { get; set; }
+
+        [JsonProperty("cpu_extra_time", NullValueHandling = NullValueHandling.Ignore)]
+        public double? CpuExtraTime { get; set; }
+
         [JsonProperty("wall_time_limit", NullValueHandling = NullValueHandling.Ignore)]
         public double? WallTimeLimit { get; set; }
+
+        [JsonProperty("memory_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public double? MemoryLimit { get; set; }
+
+        [JsonProperty("stack_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public long? StackLimit { get; set; }
+
+        [JsonProperty("max_processes_and_or_threads", NullValueHandling = NullValueHandling.Ignore)]
+        public long? MaxProcessesAndOrThreads { get; set; }
+
+        [JsonProperty("enable_per_process_and_thread_time_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? EnablePerProcessAndThreadTimeLimit { get; set; }
+
+        [JsonProperty("enable_per_process_and_thread_memory_limit", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? EnablePerProcessAndThreadMemoryLimit { get; set; }
+
+        [JsonProperty("max_file_size", NullValueHandling = NullValueHandling.Ignore)]
+        public long? MaxFileSize { get; set; }
     }
 
     public partial class SubmissionParameters
